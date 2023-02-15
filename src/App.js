@@ -65,23 +65,21 @@ function App() {
         <Container>
           <Navbar.Brand>TodosApp</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link to={"/todos/"} href="/todos">
+            <Link class="nav-link" to={"/todos"}>
               Todos
-            </Nav.Link>
-            {user == null || user === "" ? (
-              <>
-                <Nav.Link to={"/login"} href="/login">
-                  Login
-                </Nav.Link>
-                <Nav.Link to={"/signup"} href="/signup">
-                  Sign Up
-                </Nav.Link>
-              </>
+            </Link>{" "}
+            {user ? (
+              <Link class="nav-link" onClick={logout}>
+                Logout ({user})
+              </Link>
             ) : (
               <>
-                <Nav.Link onClick={logout} to={"/"} href="/">
-                  Logout ({user})
-                </Nav.Link>
+                <Link class="nav-link" to={"/login"}>
+                  Login
+                </Link>{" "}
+                <Link class="nav-link" to={"/signup"}>
+                  Sign Up
+                </Link>
               </>
             )}
           </Nav>
